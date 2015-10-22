@@ -3,3 +3,63 @@ body {
 	margin: 0;
 	display: flex;
 }
+.main-container {
+	position: relative;
+	width: 100%;
+	min-height: 800px;
+	/*background-color: red;*/
+}
+#category-bar {
+	display: block;
+	width: 100%;
+	height: 80px;
+	margin: 0px;
+}
+.cat-button {
+	height: 100%;
+	background-color: #000;
+	color: #fff;
+	border: solid #fff 1px;
+}
+.cat-button h3 {
+	text-align: center;
+}
+#category-image-bar {
+	display: block;
+	width: 100%;
+	margin: 0px;
+}
+.cat-img {
+	display: block;
+	/*height: 250px;*/
+	border: solid #fff 1px;
+	padding: 0px !important;
+}
+.cat-img img {
+	width: 100%;
+}
+#main-content {
+	display: block;
+	width: 100%;
+	margin: 5px 0 10px 0;
+	/*height: 100%;*/
+	background-color: #ccc;
+	border-top: solid 2px #fff;
+}
+.pictures {
+	display: block;
+	border: solid #fff 1px;
+	padding: 0px !important;
+}
+#main-content img {
+	width: 100%;
+}
+#main-content .row {
+	margin: 0px !important;
+}
+/*#cat-1 {
+	background-color: green;
+}
+#cat-2 {
+	background-color: blue;
+}*/
