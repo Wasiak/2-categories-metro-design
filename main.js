@@ -24,6 +24,20 @@ var pictures = [
   'http://lorempixel.com/400/300/?3',
   'http://lorempixel.com/800/300/?4'
 ];
+var cat1Pictures = [
+  'index0',
+  'http://lorempixel.com/400/300/?3',
+  'http://lorempixel.com/800/300/?3',
+  'http://lorempixel.com/400/300/?3',
+  'http://lorempixel.com/800/300/?3'    
+];
+var cat2Pictures = [
+  'index0',
+  'http://lorempixel.com/800/300/?4',
+  'http://lorempixel.com/400/300/?4',
+  'http://lorempixel.com/800/300/?4',
+  'http://lorempixel.com/400/300/?4'
+];
 
 var createPicturesRows = function() {
   var mainContent = document.getElementById('main-content');
@@ -69,11 +83,53 @@ var createPicturesRows = function() {
 }
 createPicturesRows();
 
+var categoryToShow = 'main';
+
 var setImages = function() {
-  for (i = 1; i < pictures.length; i++) {
-    var picDiv = document.getElementById('pic-' + i);
-    var pic = picDiv.getElementsByTagName('img')[0];
-    pic.src = pictures[i];
+  console.log(categoryToShow);
+  if  (categoryToShow === 'main') {
+    for (i = 1; i < pictures.length; i++) {
+      var picDiv = document.getElementById('pic-' + i);
+      var pic = picDiv.getElementsByTagName('img')[0];
+      pic.src = pictures[i];
+    }
+  } else if (categoryToShow === 'first') {
+    for (i = 2; i < pictures.length; i += 2) {
+      var picDiv = document.getElementById('pic-' + i);
+      var pic = picDiv.getElementsByTagName('img')[0];
+      pic.src = cat1Pictures[i/2];
+    }
+  } else if (categoryToShow === 'second') {
+    for (i = 1; i < pictures.length; i += 2) {
+      var picDiv = document.getElementById('pic-' + i);
+      var pic = picDiv.getElementsByTagName('img')[0];
+      pic.src = cat2Pictures[Math.ceil(i/2)];
+    }
   }
 }
-setImages();
+setImages(); 
+
+var displayCat1 = function() {
+  if (categoryToShow !== 'first') {
+    categoryToShow = 'main';
+    setImages();
+    categoryToShow = 'first';
+  } else {
+    categoryToShow = 'main';
+  }
+  setImages();
+}
+var displayCat2 = function() {
+  if (categoryToShow !== 'second') {  
+    categoryToShow = 'main';
+    setImages();
+    categoryToShow = 'second';
+  } else {
+    categoryToShow = 'main';
+  }
+  setImages();
+} 
+var cat1Button = document.getElementById('cat-1');
+var cat2Button = document.getElementById('cat-2');
+cat1Button.addEventListener('click', displayCat1);
+cat2Button.addEventListener('click', displayCat2);
