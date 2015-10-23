@@ -7,6 +7,7 @@ body {
 	position: relative;
 	width: 100%;
 	min-height: 800px;
+	overflow: hidden;
 	/*background-color: red;*/
 }
 #category-bar {
@@ -41,21 +42,28 @@ body {
 #main-content {
 	display: block;
 	width: 100%;
-	margin: 5px 0 10px 0;
+	margin: 0px 0 10px 0;
 	/*height: 100%;*/
 	background-color: #ccc;
-	border-top: solid 2px #fff;
+	/*border-top: solid 2px #fff;*/
 }
 .pictures {
 	display: block;
 	border: solid #fff 1px;
 	padding: 0px !important;
+	right: 0px;
+	transition: transform 1s;
 }
 #main-content img {
 	width: 100%;
 }
 #main-content .row {
 	margin: 0px !important;
+}
+.right-hide {
+	position: absolute;
+	/*right: -1000px;*/
+	transform: translateX(1000px);
 }
 /*#cat-1 {
 	background-color: green;

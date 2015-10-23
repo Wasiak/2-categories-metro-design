@@ -85,6 +85,15 @@ createPicturesRows();
 
 var categoryToShow = 'main';
 
+var hideRightPictures = function(element) {
+  console.log('hiding run');
+  element.classList.add('right-hide');
+}
+var showRightPictures = function(element) {
+  console.log('showing run');
+  element.classList.remove('right-hide');
+}
+
 var setImages = function() {
   console.log(categoryToShow);
   if  (categoryToShow === 'main') {
@@ -97,7 +106,15 @@ var setImages = function() {
     for (i = 2; i < pictures.length; i += 2) {
       var picDiv = document.getElementById('pic-' + i);
       var pic = picDiv.getElementsByTagName('img')[0];
+      hideRightPictures(picDiv);
+      
+      picDiv.addEventListener('transitionend', function(){
+        showRightPictures(picDiv);
+        console.log('transition finish');
+      });
       pic.src = cat1Pictures[i/2];
+      // picDiv.addEventListener('transitionend', showRightPictures(picDiv));
+      
     }
   } else if (categoryToShow === 'second') {
     for (i = 1; i < pictures.length; i += 2) {
@@ -110,6 +127,7 @@ var setImages = function() {
 setImages(); 
 
 var displayCat1 = function() {
+
   if (categoryToShow !== 'first') {
     categoryToShow = 'main';
     setImages();
