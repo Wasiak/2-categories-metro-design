@@ -91,7 +91,15 @@ var hideRightPictures = function(element) {
 }
 var showRightPictures = function(element) {
   console.log('showing run');
-  element.classList.remove('right-hide');
+  element.addEventListener('transitionend', function(){
+    element.classList.remove('right-hide');
+    console.log('elo');
+  })
+  // element.classList.remove('right-hide');
+}
+var hideLeftPictures = function(element) {
+  console.log('hiding run');
+  element.classList.add('left-hide');
 }
 
 var setImages = function() {
@@ -100,6 +108,20 @@ var setImages = function() {
     for (i = 1; i < pictures.length; i++) {
       var picDiv = document.getElementById('pic-' + i);
       var pic = picDiv.getElementsByTagName('img')[0];
+      // hideRightPictures(picDiv);
+      // hideLeftPictures(picDiv);
+      // picDiv.addEventListener('transitionend', function(){
+      //   // showRightPictures(picDiv);
+      //   console.log('transition finish');
+      //   var hiddenPics = document.getElementsByClassName('right-hide');
+      //   for (i = 0; i < hiddenPics.length; i++) {
+      //     hiddenPics[i].classList.remove('right-hide');
+      //   }
+      //   var hiddenPicsL = document.getElementsByClassName('left-hide');
+      //   for (i = 0; i < hiddenPics.length; i++) {
+      //     hiddenPicsL[i].classList.remove('left-hide');
+      //   }
+      // });
       pic.src = pictures[i];
     }
   } else if (categoryToShow === 'first') {
@@ -109,8 +131,12 @@ var setImages = function() {
       hideRightPictures(picDiv);
       
       picDiv.addEventListener('transitionend', function(){
-        showRightPictures(picDiv);
+        // showRightPictures(picDiv);
         console.log('transition finish');
+        var hiddenPics = document.getElementsByClassName('right-hide');
+        for (i = 0; i < hiddenPics.length; i++) {
+          hiddenPics[i].classList.remove('right-hide');
+        }
       });
       pic.src = cat1Pictures[i/2];
       // picDiv.addEventListener('transitionend', showRightPictures(picDiv));
@@ -120,6 +146,15 @@ var setImages = function() {
     for (i = 1; i < pictures.length; i += 2) {
       var picDiv = document.getElementById('pic-' + i);
       var pic = picDiv.getElementsByTagName('img')[0];
+      hideLeftPictures(picDiv);
+      
+      picDiv.addEventListener('transitionend', function(){
+        console.log('transition finish');
+        var hiddenPics = document.getElementsByClassName('left-hide');
+        for (i = 0; i < hiddenPics.length; i++) {
+          hiddenPics[i].classList.remove('left-hide');
+        }
+      });
       pic.src = cat2Pictures[Math.ceil(i/2)];
     }
   }
