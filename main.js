@@ -110,6 +110,12 @@ var displayCat4 = function() {
     $(element).addClass('cat-2');
   });
 }
+var runRightDisplayFunction = function(x) {
+  if (x === 1) {displayCat1();}
+  else if (x === 2) {displayCat2();}
+  else if (x === 3) {displayCat3();}
+  else if (x === 4) {displayCat4();}
+}
 
 var showRightPictures = function() {
   $('.right-hide').removeClass('right-hide');
@@ -117,7 +123,7 @@ var showRightPictures = function() {
 var hideRightPictures = function(c) {
   $('.right').addClass('right-hide');
   $('.right').on('transitionend', function() {
-     window['displayCat' + c]();
+     runRightDisplayFunction(c);
   });
   $('.right').find('img').on('load', showRightPictures);
 }
@@ -128,7 +134,7 @@ var showLeftPictures = function() {
 var hideLeftPictures = function(c) {
   $('.left').addClass('left-hide');
   $('.left').on('transitionend', function() {
-    window['displayCat' + c]();
+    runRightDisplayFunction(c);
   });
   $('.left').find('img').on('load', showLeftPictures);
 }
