@@ -35,6 +35,8 @@ body {
 	/*height: 250px;*/
 	border: solid #fff 1px;
 	padding: 0px !important;
+	transition: transform 0.5s;
+	z-index: 2;
 }
 .cat-img img {
 	width: 100%;
@@ -69,9 +71,41 @@ body {
 	position: absolute;
 	transform: translateX(-1000px);
 }
-/*#cat-1 {
-	background-color: green;
+#subcategories-bar {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	position: relative;
 }
-#cat-2 {
-	background-color: blue;
+.subcat-div {
+	height: 269px;
+	background-color: red;
+	border: solid 1px #fff;
+	position: absolute !important;
+	z-index: 2;
+	transform-origin: 50% 0;
+	transform: rotateX(90deg);
+	transition: transform 0.5s;
+}
+.visible {
+	transform: rotateX(0deg);
+}
+#cat-2-list {
+	right: 0;
+}
+.move-right {
+	position: absolute;
+	transform: translateX(100%);
+	z-index: 3;
+}
+.move-left {
+	position: absolute;
+	transform: translateX(-100%);
+	z-index: 3;
+}
+/*#cat-1:hover #cat-1-list {
+	transform: rotateX(0deg);
+}
+#cat-2:hover #cat-2-list {
+	transform: rotateX(0deg);
 }*/
